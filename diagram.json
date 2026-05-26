@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "author": "ACS — BitDogLab / RP2040",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico-w",
+      "id": "pico",
+      "top": 120,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-neopixel-matrix",
+      "id": "matrix",
+      "top": 0,
+      "left": 320,
+      "attrs": { "rows": "5", "cols": "5" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joy",
+      "top": 220,
+      "left": 370,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo",
+      "top": 0,
+      "left": 560,
+      "attrs": { "horn": "single" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 200,
+      "left": 580,
+      "attrs": { "volume": "0.4" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb",
+      "top": 360,
+      "left": 420,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res_r",
+      "top": 356,
+      "left": 310,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res_g",
+      "top": 384,
+      "left": 310,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res_b",
+      "top": 412,
+      "left": 310,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_arme",
+      "top": 420,
+      "left": 560,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    ["pico:GND.3", "$serialMonitor:GND", "", []],
+
+    ["pico:GP7",  "matrix:DIN", "green",  []],
+    ["pico:3V3",  "matrix:VCC", "red",    []],
+    ["pico:GND.1","matrix:GND", "black",  []],
+
+    ["pico:3V3",  "joy:VCC",   "red",    []],
+    ["pico:GND.2","joy:GND",   "black",  []],
+    ["pico:GP27", "joy:VERT",  "orange", []],
+    ["pico:GP26", "joy:HORIZ", "yellow", []],
+
+    ["pico:GP28", "servo:PWM", "purple", []],
+    ["pico:VSYS", "servo:V+",  "red",    []],
+    ["pico:GND.4","servo:GND", "black",  []],
+
+    ["pico:GP21", "buzzer:1",  "cyan",   []],
+    ["pico:GND.5","buzzer:2",  "black",  []],
+
+    ["pico:GP13", "res_r:1",   "red",    []],
+    ["res_r:2",   "rgb:R",     "red",    []],
+    ["pico:GP11", "res_g:1",   "green",  []],
+    ["res_g:2",   "rgb:G",     "green",  []],
+    ["pico:GP12", "res_b:1",   "blue",   []],
+    ["res_b:2",   "rgb:B",     "blue",   []],
+    ["pico:GND.6","rgb:COM",   "black",  []],
+
+    ["pico:GP5",  "btn_arme:1.l", "purple", []],
+    ["pico:GND.7","btn_arme:2.l", "black",  []]
+  ]
+}
