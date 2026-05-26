@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = "build/acs.uf2"
+elf = "build/acs.elf"
